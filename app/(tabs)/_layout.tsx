@@ -1,5 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
+
 import React from 'react';
 import { Pressable } from 'react-native';
 
@@ -14,6 +15,7 @@ function TabBarIcon(props: {
 }) {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
+
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
