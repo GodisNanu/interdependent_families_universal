@@ -18,7 +18,7 @@ function Header({
   return (
     <header className="header">
       <p className="header__date">{currentDate}</p>
-      <Link href="/profile">
+      <Link href="/">
         <img src={logo?.uri || logo} alt="IF logo" className="header__logo" />
       </Link>
       {/* <div className="header__navigation-container">
@@ -35,13 +35,12 @@ function Header({
               {" "}
               + Add Class{" "}
             </button>
-            <Link to="/profile">
+            <Link href="/profile">
               <button
                 type="button"
                 className="header__navigation-profile-button"
               >
-                {" "}
-                Profile{" "}
+                Profile
               </button>
             </Link>
             <button
