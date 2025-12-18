@@ -4,12 +4,12 @@
     "slug": "InterdependentFamiliesUniversal",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/Interdependent Families Logo copy.png",
+    "icon": "./assets/images/InterdependentFamiliesLogo.png",
     "scheme": "interdependentfamiliesuniversal",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/Interdependent Families Logo copy.png",
+      "image": "./assets/images/InterdependentFamiliesLogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,7 +18,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/Interdependent Families Logo copy.png",
+        "foregroundImage": "./assets/images/InterdependentFamiliesLogo.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
@@ -27,11 +27,12 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./public/Interdependent Families Logo.svg"
+      "favicon": "./public/InterdependentFamiliesLogo.svg"
     },
     "plugins": ["expo-router", "expo-font"],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "tsconfigPaths": true
     }
   }
 }

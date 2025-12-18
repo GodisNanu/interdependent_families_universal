@@ -1,5 +1,5 @@
+import "@/src/blocks/profile.css";
 import ClassSection from "@/src/components/ClassSection.jsx";
-import "@src/blocks/profile.css";
 
 function ProfilePage({ isLoggedIn, handleJoinClick }) {
   return (

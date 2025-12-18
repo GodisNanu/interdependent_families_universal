@@ -1,11 +1,13 @@
 .page {
-  overflow: hidden;
   width: 100%;
+  min-height: 100vh;
+  overflow: visible !important ;
 }
 
 .page__content {
   width: 100%;
   margin: 0 auto;
+  overflow: visible !important;
 }
 
 .page__preloader {

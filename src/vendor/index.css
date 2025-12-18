@@ -1,2 +1,26 @@
-@import url(./vendor/normalize.css);
-@import url(./vendor/fonts.css);
+@import url(./normalize.css);
+/* @import url(./fonts.css); */
+html,
+body,
+#root,
+[data-expo-router-root] {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  display: block !important;
+}
+
+div[style*="flex: 1"] {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow: visible !important;
+}

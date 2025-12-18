@@ -1,6 +1,6 @@
+import logo from "@/public/InterdependentFamiliesLogo.svg";
 import "@/src/blocks/header.css";
 import { Link } from "expo-router";
-import logo from "@/src/assets/Interdependent Families Logo.svg";
 
 const currentDate = new Date().toLocaleString("default", {
   month: "long",
@@ -19,7 +19,7 @@ function Header({
     <header className="header">
       <p className="header__date">{currentDate}</p>
       <Link href="/profile">
-        <img src={logo} alt="IF logo" className="header__logo" />
+        <img src={logo?.uri || logo} alt="IF logo" className="header__logo" />
       </Link>
       {/* <div className="header__navigation-container">
             <button className="header__navigation-about-button"> About Us </button>

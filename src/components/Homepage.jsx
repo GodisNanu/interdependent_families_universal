@@ -1,5 +1,5 @@
-import heroImage from "@/src/assets/Interderdependent Families Tree.png";
-import advertisement from "@/src/assets/IF Membership Options.png";
+import advertisement from "@/assets/IFMembershipOptions.png";
+import heroImage from "@/assets/Interderdependent-Families-Tree.png";
 import "@/src/blocks/homepage.css";
 import ClassSection from "./ClassSection.jsx";
 
@@ -8,7 +8,7 @@ function Homepage({ isLoggedIn, handleJoinClick }) {
     <main className="homepage">
       <section className="homepage__hero-section">
         <img
-          src={heroImage}
+          src={heroImage?.uri || heroImage}
           alt="hero image"
           className="homepage__hero-section-image"
         />
@@ -58,7 +58,7 @@ function Homepage({ isLoggedIn, handleJoinClick }) {
       <section className="homepage__membership-section">
         <img
           onClick={handleJoinClick}
-          src={advertisement}
+          src={advertisement?.uri || advertisement}
           alt="membership advertisement"
           className="homepage__membership-image"
         />

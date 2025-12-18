@@ -1,13 +1,12 @@
-import React from "react";
 import { useEffect, useState } from "react";
 /* Will need to swap out react-slick */
 import Slider from "react-slick";
-import ClassCard from "./ClassCard.jsx";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import ClassCard from "./ClassCard.jsx";
 
-import { getClasses } from "@src/utils/googleCalendarApi";
 import "@/src/blocks/class.css";
+import { getClasses } from "@/src/utils/googleCalendarApi";
 
 function ClassSection({ isLoggedIn, handleJoinClick }) {
   const [data, setData] = useState([]);
