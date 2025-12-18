@@ -3,13 +3,12 @@
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  padding-top: 300px;
   background-color: white;
 }
 
 .profile__page-hero {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -17,7 +16,7 @@
 }
 
 .profile__page-hero-image {
-  background-image: url("../assets/ProfileHeroImage.png");
+  background-image: url("../../ProfileHeroImage.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
