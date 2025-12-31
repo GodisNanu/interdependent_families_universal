@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
-import "@/src/blocks/page.css";
-/* Replace with useRouter and Stack */
-/* import { Route, Routes, useNavigate } from "react-router-dom";*/
-import ProtectedRoute from "./ProtectedRoute.jsx";
-import Loading from "./Preloader.jsx";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
-import Homepage from "./Homepage.jsx";
-import ProfilePage from "./ProfilePage.jsx";
-import JoinModal from "./JoinModal.jsx";
+import React, { useEffect, useState } from "react";
+/* import "@/src/blocks/page.css"; */
+import { Stack, useRouter } from "expo-router";
+import { Platform, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import AddClassModal from "./AddClassModal.jsx";
-import LogoutModal from "./LogoutModal.jsx";
+import Footer from "./Footer.jsx";
+import Header from "./Header.jsx";
+import JoinModal from "./JoinModal.jsx";
 import LoginModal from "./LoginModal.jsx";
+import LogoutModal from "./LogoutModal.jsx";
+import Loading from "./Preloader.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -21,20 +19,20 @@ function App() {
     }, 2000);
   }, []);
 
-  /* const [isLoading, setIsLoading] = useState(false); */
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [activeModal, setActiveModal] = useState("");
-  const [newError, setNewError] = useState("");
+  const [isLoading, setIsLoading] = useState <boolean> (false);
+  const [isLoggedIn, setIsLoggedIn] = useState < boolean > (false);
+  const [activeModal, setActiveModal] = useState < string > ("");
+  const [newError, setNewError] = useState < string > ("");
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const onClose = () => {
     setActiveModal("");
     setNewError("");
   };
 
-  const handleOutsideClick = (e) => {
-    if (e.target.classList.contains("modal")) {
+  const handleOutsideClick = (e: any) => {
+    if (Platform.OS === "web" && e.target.classList.contains("modal")) {
       onClose();
     }
   };
@@ -42,12 +40,12 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     onClose();
-    navigate("/");
+    router.replace("/");
   };
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    navigate("/profile");
+    router.replace("/profile");
     onClose();
   };
 
@@ -68,8 +66,9 @@ function App() {
   }
 
   useEffect(() => {
+    if (Platform.OS !== "web") return;
     if (!activeModal) return;
-    const handleEscClose = (e) => {
+    const handleEscClose = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
       }
@@ -83,12 +82,12 @@ function App() {
   }, [activeModal]);
 
   return (
-    <>
+    <SafeAreaView style={styles.container}>
       {loading ? (
         <Loading />
       ) : (
-        <div className="page">
-          <div className="page__content">
+        <View style={styles.page}>
+          <View style={styles.pageContent}>
             <Header
               isLoggedIn={isLoggedIn}
               handleAddClassClick={handleAddClassClick}
@@ -96,28 +95,7 @@ function App() {
               handleLoginClick={handleLoginClick}
               handleJoinClick={handleJoinClick}
             />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Homepage
-                    isLoggedIn={isLoggedIn}
-                    handleJoinClick={handleJoinClick}
-                  />
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute isLoggedIn={isLoggedIn}>
-                    <ProfilePage
-                      isLoggedIn={isLoggedIn}
-                      handleJoinClick={handleJoinClick}
-                    />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
+            <Stack screenOptions={{ headerShown: false }} />     
             <JoinModal
               isOpen={activeModal === "join-modal"}
               handleOutsideClick={handleOutsideClick}
@@ -145,11 +123,21 @@ function App() {
             {/* Components of the Staff Page */
             /* Modals */}
             <Footer />
-          </div>
-        </div>
+          </View>
+        </View>
       )}
-    </>
+    </SafeAreaView>
   );
 }
 
 export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  }, 
+  page: { flex: 1,},
+  pageContent: {
+    flex: 1,
+  }
+});

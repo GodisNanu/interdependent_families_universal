@@ -1,7 +1,11 @@
 import "@/src/blocks/profile.css";
 import ClassSection from "@/src/components/ClassSection.jsx";
+import { Redirect } from "expo-router";
 
 function ProfilePage({ isLoggedIn, handleJoinClick }) {
+  if (!isLoggedIn) {
+    return <Redirect href="/" />;
+  }
   return (
     <div className="profile__page">
       <section className="profile__page-hero">
