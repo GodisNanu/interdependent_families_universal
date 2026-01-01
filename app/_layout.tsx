@@ -5,14 +5,15 @@ import JoinModal from "@/src/components/JoinModal";
 import LoginModal from "@/src/components/LoginModal";
 import LogoutModal from "@/src/components/LogoutModal";
 import { useColorScheme } from '@/src/components/useColorScheme';
+import { AuthProvider, useAuth } from "@/src/context/AuthContext";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Href, Stack, router } from 'expo-router';
 import Head from 'expo-router/head';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect, useState } from 'react';
-import { Platform } from 'react-native'; // Added for Web check
+import { DimensionValue, Platform, StyleSheet, View, ViewStyle } from "react-native";
 import 'react-native-reanimated';
 
 SplashScreen.preventAutoHideAsync();
@@ -50,15 +51,21 @@ export default function RootLayout() {
 
   /* if (!loaded) return <Stack />; */
 
-  return <RootLayoutNav />;
+  return (
+    <AuthProvider>
+      <RootLayoutNav />
+    </AuthProvider>
+  );
 }
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {isLoggedIn, setIsLoggedIn} = useAuth();
   const [activeModal, setActiveModal] = useState("");
   const [newError, setNewError] = useState("");
+ 
+ 
 
 
   const onClose = () => {
@@ -74,7 +81,10 @@ function RootLayoutNav() {
   };
 
   const handleLogin = () => {
+    console.log("Login button clicked!");
     setIsLoggedIn(true);
+    const profileRoute: Href = "/profile";
+    router.replace(profileRoute);
     onClose();
   };
 
@@ -130,25 +140,24 @@ function RootLayoutNav() {
         <link rel="icon" type="image/svg+xml" href="/InterdependentFamiliesLogo.svg" />
       </Head>
 
-<div className="page" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <div className="page__content">
-          <Header
-            isLoggedIn={isLoggedIn}
-              handleAddClassClick={handleAddClassClick}
-              handleLogoutClick={handleLogoutClick}
-              handleLoginClick={handleLoginClick}
-              handleJoinClick={handleJoinClick}
-          />
-<div style={{ flex: 1 }}>
-      <Stack>
-            <Stack.Screen name="index" options={{ headerShown: true }} />
-            <Stack.Screen name="profile" options={{ headerShown: true }} />
+      <View style={styles.page}>
+      <View style={styles.pageContent}>
+        <Header
+          isLoggedIn={isLoggedIn}
+          handleAddClassClick={handleAddClassClick}
+          handleLogoutClick={handleLogoutClick}
+          handleLoginClick={handleLoginClick}
+          handleJoinClick={handleJoinClick}
+        />
+<View style={{ flex: 1 }}>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" />
+            <Stack.Screen name="profile" />
           </Stack>
-          
-          </div>
+        </View>
           <Footer />
           
-        </div>
+        </View>
 <JoinModal
            isOpen={activeModal === "join-modal"}
               handleOutsideClick={handleOutsideClick}
@@ -174,8 +183,23 @@ function RootLayoutNav() {
               onClose={onClose}
         />
         
-      </div>
+      </View>
 
     </ThemeProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  page: {
+    width: "100%",
+    ...Platform.select({
+      web: { minHeight: "100vh" as DimensionValue},
+      default: { flex: 1 } 
+    }),
+    backgroundColor: "#121212", 
+  } as ViewStyle,
+  pageContent: {
+    width: "100%",
+    flex: 1, 
+  }
+});
