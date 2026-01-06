@@ -1,9 +1,10 @@
-import ClassSection from "@/src/components/ClassSection.jsx";
+import ClassSection from "@/src/components/ClassSection";
 import { useAuth } from "@/src/context/AuthContext";
-import { Redirect, useNavigation, useLocalSearchParams } from "expo-router";
+import { Redirect, useNavigation } from "expo-router";
 import React from "react";
 import { Dimensions, Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { WebView } from "react-native-webview";
+
 
 function ProfilePage() {
 const {isLoggedIn} = useAuth();

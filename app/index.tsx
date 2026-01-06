@@ -3,7 +3,7 @@ import { Dimensions, Image, Platform, ScrollView, StyleSheet, Text, TouchableOpa
 
 import advertisement from "@/assets/images/IFMembershipOptions.png";
 import heroImage from "@/assets/images/Interdependent-Families-Tree.png";
-import ClassSection from "@/src/components/ClassSection.jsx";
+import ClassSection from "@/src/components/ClassSection";
 
 const screenWidth = Dimensions.get('window').width;
 interface HomepageProps {
