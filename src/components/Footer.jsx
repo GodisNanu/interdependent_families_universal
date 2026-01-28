@@ -1,5 +1,6 @@
 import "@/src//blocks/footer.css";
 
+
 function Footer() {
   return (
     <footer className="footer">
