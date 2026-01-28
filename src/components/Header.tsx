@@ -1,16 +1,16 @@
 import React from "react";
 import {
-  View,
-  Text,
+  Dimensions,
   Image,
-  TouchableOpacity,
-  StyleSheet,
   Platform,
-  Dimensions
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 
 import logo from "@/public/InterdependentFamiliesLogo.svg";
-import "@/src/blocks/header.css";
+/* import "@/src/blocks/header.css"; */
 import { Link } from "expo-router";
 
 interface HeaderProps {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     }),
   },
   date: {
-    color: "rgba(255, 255, 255, 1)",
+    color: "rgba(65, 65, 65, 1)",
     fontWeight: "300",
     fontSize: isMobile ? 18 : 36,
     marginRight: 26,
