@@ -62,6 +62,7 @@ function Homepage({ isLoggedIn, handleJoinClick }: HomepageProps) {
         <View style={styles.membershipSection}>
         <TouchableOpacity onPress={handleJoinClick}>
           <Image source={advertisement} style={styles.membershipImage} />
+          /* switch to Cards Slider */
         </TouchableOpacity>
       </View>
       </ScrollView>

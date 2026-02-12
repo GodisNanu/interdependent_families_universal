@@ -120,8 +120,7 @@ function App() {
               handleLogout={handleLogout}
               onClose={onClose}
             />
-            {/* Components of the Staff Page */
-            /* Modals */}
+            {/* Components of the Staff Page */}
             <Footer />
           </View>
         </View>

@@ -45,12 +45,12 @@ export default ClassCard;
 
 const styles = StyleSheet.create({
   cardWrapper: {
-    width: width * 0.55, 
+    width: width * 0.45, 
     alignItems: 'center', 
     justifyContent: 'center',
   },
   classCardContent: { backgroundColor: 'rgba(0, 0, 0, 1)',
-    width: '50%',  
+    width: '80%',  
     aspectRatio: 1,           
     borderRadius: 1000, 
     borderWidth: 2,
