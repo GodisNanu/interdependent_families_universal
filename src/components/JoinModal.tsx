@@ -3,10 +3,10 @@ import {
   Dimensions,
   Modal,
   Platform,
+  Pressable,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  View,
+  View
 } from "react-native";
 /* import "@/src/blocks/join.css"; */
 import Loading from "./Preloader";
@@ -41,14 +41,21 @@ const JoinModal = ({ isOpen,  onClose }: JoinModalProps)  => {
    <View style={styles.joinModal}>
    <View style={styles.joinModalContent}>
    <Text style={styles.joinModalTitle}>Membership Application Form</Text>
-        <TouchableOpacity 
-            style={styles.joinModalClose} 
+        <Pressable
+            style= {({hovered, pressed }) => [
+              styles.joinModalClose,
+              {
+                opacity: pressed ? 0.8 : 1,
+                transform: [
+                  {perspective: 1000}, 
+                  { rotateY: hovered ? "30deg" : "0deg"}]
+              }
+            ]} 
             onPress={onClose}
-            activeOpacity={0.8}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            hitSlop={20}
           >
             <Text style={styles.closeText}>X</Text>
-          </TouchableOpacity>
+          </Pressable>
           <View style={styles.webviewWrapper}>
           {Platform.OS === 'web' ? (  
             <iframe
@@ -96,8 +103,7 @@ const styles = StyleSheet.create({
     position: "relative",
     ...Platform.select({
       ios: { shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25 },
-      android: { elevation: 5 }
-    })
+      android: { elevation: 5 }}),
   },
   joinModalTitle: {
     fontFamily: "Londrina-Regular",
@@ -108,10 +114,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   joinModalClose: {
-    position: "absolute",
-    top: 20,
-    right: 28,
-    zIndex: 1001,
+    position: "absolute", 
+  top: 20,
+  right: 28,
+  width: 48,
+  height: 48,
+  backgroundColor: "transparent",
+  zIndex: 1001,
+  ...Platform.select({
+    web: {
+      cursor: "pointer"
+    } as any,
+  })
   },
   closeText: {
     fontFamily: "Londrina-Black",
