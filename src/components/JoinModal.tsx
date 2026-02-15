@@ -33,7 +33,7 @@ const JoinModal = ({ isOpen,  onClose }: JoinModalProps)  => {
 
   return (
     <Modal
-      animationType="slide"
+      animationType="none"
       transparent={true}
       visible={isOpen}
       onRequestClose={onClose}
@@ -45,7 +45,7 @@ const JoinModal = ({ isOpen,  onClose }: JoinModalProps)  => {
             style= {({hovered, pressed }) => [
               styles.joinModalClose,
               {
-                opacity: pressed ? 0.8 : 1,
+                opacity: hovered ? 0.8 : 1,
                 transform: [
                   {perspective: 1000}, 
                   { rotateY: hovered ? "30deg" : "0deg"}]
