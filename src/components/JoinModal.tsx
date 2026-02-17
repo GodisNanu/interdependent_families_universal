@@ -26,7 +26,7 @@ const isMobile = width < 1080;
 
 const JoinModal = ({ isOpen,  onClose }: JoinModalProps)  => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const calendarUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd5ei6TWf1pcebmK1O8W1ZY63GCHExonh_bBquXDtCtgvGoCA/viewform?embedded=true";
+  const joinUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd5ei6TWf1pcebmK1O8W1ZY63GCHExonh_bBquXDtCtgvGoCA/viewform?embedded=true";
   const handleWebviewLoad = () => {
     setIsLoading(false);
   };
@@ -59,14 +59,14 @@ const JoinModal = ({ isOpen,  onClose }: JoinModalProps)  => {
           <View style={styles.webviewWrapper}>
           {Platform.OS === 'web' ? (  
             <iframe
-                src={calendarUrl}
+                src={joinUrl}
                 style={{ width: '100%', height: '100%', border: 'none' }}
                 onLoad={handleWebviewLoad}
                 title="Google Calendar"
               />
             ) : (
             <WebView
-              source={calendarUrl}
+              source={joinUrl}
               onLoadEnd={handleWebviewLoad}
               style={styles.webview}
               scalesPageToFit={true}

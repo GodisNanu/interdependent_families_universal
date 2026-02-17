@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import ModalWithForm from "./ModalWithForm.jsx";
 import { useFormAndValidation } from "@/src/hooks/useFormAndValidation";
+import { useEffect } from "react";
+import ModalWithForm from "./ModalWithForm";
 
 const LoginModal = ({
   handleOutsideClick,

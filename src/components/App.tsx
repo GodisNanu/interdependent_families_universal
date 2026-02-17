@@ -4,10 +4,10 @@ import { Stack, useRouter } from "expo-router";
 import { Platform, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AddClassModal from "./AddClassModal.jsx";
-import Footer from "./Footer.jsx";
-import Header from "./Header.jsx";
+import Footer from "./Footer";
+import Header from "./Header";
 import JoinModal from "./JoinModal.jsx";
-import LoginModal from "./LoginModal.jsx";
+import LoginModal from "./LoginModal";
 import LogoutModal from "./LogoutModal.jsx";
 import Loading from "./Preloader.jsx";
 
@@ -98,7 +98,6 @@ function App() {
             <Stack screenOptions={{ headerShown: false }} />     
             <JoinModal
               isOpen={activeModal === "join-modal"}
-              handleOutsideClick={handleOutsideClick}
               onClose={onClose}
             />
             <LoginModal
@@ -111,7 +110,6 @@ function App() {
             />
             <AddClassModal
               isOpen={activeModal === "add-class"}
-              handleOutsideClick={handleOutsideClick}
               onClose={onClose}
             />
             <LogoutModal

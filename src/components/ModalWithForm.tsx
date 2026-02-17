@@ -1,4 +1,4 @@
-import "@/src/blocks/modal.css";
+/* import "@/src/blocks/modal.css"; */
 
 function ModalWithForm({
   children,
